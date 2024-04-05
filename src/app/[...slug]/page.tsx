@@ -9,5 +9,5 @@ export async function generateMetadata({ params, searchParams }: any): Promise<M
 
 export default async function Page({ params, searchParams }: any) {
     initRendering(widgetRegistry, WidgetExecutionError);
-    return RenderPage({ params, searchParams });
+    return <RenderPage params={params} searchParams={searchParams}></RenderPage>;
 }

@@ -1,24 +1,21 @@
-import { Model, WidgetEntity, ComplexType, DataModel, DataType, DisplayName} from '@progress/sitefinity-widget-designers-sdk';
-
+import {
+    ComplexType,
+    Content,
+    ContentContainer,
+    ContentSection,
+    DataModel,
+    DataType,
+    KnownFieldTypes,
+    MediaItem,
+    Model,
+    TaxonomyContent,
+    WidgetEntity,
+} from '@progress/sitefinity-widget-designers-sdk';
+import { ReplyCardModel } from '../reply-card/reply-card.entity';
 
 @WidgetEntity('ReplyList', 'Reply list')
-
-
 export class ReplyListEntity {
-    // invalid properties
-    // would receive Type=null
+    @DataModel(ReplyCardModel)
     @DataType(ComplexType.Enumerable)
-    InvalidCollection: boolean[] | number[] | null = null;
-    @DataType(ComplexType.Enumerable, 'string')
-    ValidStringCollection: string[] | null = null;
-
-    // would receive Type='enumerable'
-    @DataModel('string')
-    @DataType(ComplexType.Enumerable)
-    AlsoValidStringCollection: string[] | null = null;
-
-
-   
-    
+    Cards2: ReplyCardModel[] | null = null;
 }
-

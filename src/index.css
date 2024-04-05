@@ -11,10 +11,6 @@
   --sf-background-color: transparent;
   background-color: var(--sf-background-color);
 }
-.pippo{
-  background-color: green;
-  border: 1px solid black;
-}
 
 .sc-video__wrapper {
   position: absolute;
