@@ -11,11 +11,11 @@ import { ImageItem } from '@progress/sitefinity-nextjs-sdk/rest-sdk';
 @Model()
 export class ReplyCardModel {
     @ContentSection('Title', 0)
-    Title: string | null = null;
+    title?: string;
 
     @MediaItem('images', false)
     @DataType('media')
-    Image: ImageItem | null = null;
+    image?: ImageItem;
 }
 
 @WidgetEntity('ReplyCard', 'Reply card')

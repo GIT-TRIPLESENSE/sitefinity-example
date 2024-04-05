@@ -17,5 +17,5 @@ import { ReplyCardModel } from '../reply-card/reply-card.entity';
 export class ReplyListEntity {
     @DataModel(ReplyCardModel)
     @DataType(ComplexType.Enumerable)
-    Cards2: ReplyCardModel[] | null = null;
+    items: ReplyCardModel[] | null = null;
 }
