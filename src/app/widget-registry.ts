@@ -10,6 +10,8 @@ import { ReplyCard } from '../components/ReplyCard';
 import { ReplyCardEntity } from './components/reply-card/reply-card.entity';
 import { ReplyNestedEntity } from './components/reply-nested/reply-nested.entity';
 import { ReplyNestedComponent } from './components/reply-nested/reply-nested';
+import { CarouselWidget } from './widgets/carousel/carousel';
+import { CarouselEntity } from './widgets/carousel/carousel.entity';
 
 const customWidgetRegistry: WidgetRegistry = {
     widgets: {
@@ -52,6 +54,14 @@ const customWidgetRegistry: WidgetRegistry = {
             ssr: true, // whether this is a server rendered or client rendered component
             editorMetadata: {
                 Title: 'Reply Nested Component',
+            },
+        },
+        Carousel: {
+            componentType: CarouselWidget, // registration of the widget
+            entity: CarouselEntity, // registration of the designer
+            ssr: true, // whether this is a server rendered or client rendered component
+            editorMetadata: {
+                Title: 'Image Carousel',
             },
         },
     },
