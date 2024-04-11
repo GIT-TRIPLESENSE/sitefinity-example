@@ -1,4 +1,4 @@
-import { htmlAttributes, WidgetContext } from '@progress/sitefinity-nextjs-sdk';
+import { htmlAttributes, RenderWidgetService, WidgetContext } from '@progress/sitefinity-nextjs-sdk';
 import React from 'react';
 
 export function SitefinityWrapper<P>({ context, children }: { context: WidgetContext<P>; children: React.ReactNode }) {
@@ -15,15 +15,24 @@ export function SitefinityComponent<P>(
         return (
             <SitefinityWrapper context={context}>
                 <Component key={context.model.Id} {...context.model.Properties}>
-                    {allowChildren === AllowChildren.Yes ? <SitefinityChildren></SitefinityChildren> : null}
+                    {allowChildren === AllowChildren.Yes ? (
+                        <SitefinityChildren context={context}></SitefinityChildren>
+                    ) : null}
                 </Component>
             </SitefinityWrapper>
         );
     };
 }
 
-export function SitefinityChildren({ id = 'default' }: { id?: string }) {
-    return <div id={'childrenHolder'} data-sfcontainer={id}></div>;
+export function SitefinityChildren<P>({ context, id = 'default' }: { context: WidgetContext<P>; id?: string }) {
+    return (
+        <>
+            {context.model.Children.toReversed().map((c) =>
+                RenderWidgetService.createComponent(c, context.requestContext),
+            )}
+            {context.requestContext.isEdit && <div id={'childrenHolder'} data-sfcontainer={id}></div>}
+        </>
+    );
 }
 
 export enum AllowChildren {
