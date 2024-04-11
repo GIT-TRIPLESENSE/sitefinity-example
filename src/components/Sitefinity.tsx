@@ -30,7 +30,7 @@ export function SitefinityChildren<P>({ context, id = 'default' }: { context: Wi
             {context.model.Children.toReversed().map((c) =>
                 RenderWidgetService.createComponent(c, context.requestContext),
             )}
-            {context.requestContext.isEdit && <div id={'childrenHolder'} data-sfcontainer={id}></div>}
+            {context.requestContext.isEdit ? <div id={'childrenHolder'} data-sfcontainer={id}></div> : null}
         </>
     );
 }

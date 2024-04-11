@@ -6,7 +6,9 @@ export function ReplyList({ items }: ReplyListEntity) {
     return (
         <div>
             <h2 className='test'> testo</h2>
-            {items?.map((card, index) => <ReplyCard key={index} title={card.title} image={card.image}></ReplyCard>)}
+            <div style={{ maxWidth: '300px' }}>
+                {items?.map((card, index) => <ReplyCard key={index} title={card.title} image={card.image}></ReplyCard>)}
+            </div>
         </div>
     );
 }

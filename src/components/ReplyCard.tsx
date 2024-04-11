@@ -10,7 +10,7 @@ export function ReplyCard({ title, image }: ReplyCardProps) {
     return (
         <div>
             <h1>{title}</h1>
-            <img src={image?.Url} />
+            <img src={image?.Url} style={{ width: '100%', height: 'auto' }} />
         </div>
     );
 }
