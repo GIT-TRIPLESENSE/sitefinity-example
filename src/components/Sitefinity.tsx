@@ -27,10 +27,15 @@ export function SitefinityComponent<P>(
 export function SitefinityChildren<P>({ context, id = 'default' }: { context: WidgetContext<P>; id?: string }) {
     return (
         <>
-            {context.model.Children.toReversed().map((c) =>
-                RenderWidgetService.createComponent(c, context.requestContext),
-            )}
-            {context.requestContext.isEdit ? <div id={'childrenHolder'} data-sfcontainer={id}></div> : null}
+            {
+                <div id={'childrenHolder'} data-sfcontainer={id} style={{ display: 'contents' }}>
+                    {context.model.Children.toReversed().map((c) => (
+                        <div style={{ display: context.requestContext.isEdit ? undefined : 'contents' }}>
+                            {RenderWidgetService.createComponent(c, context.requestContext)}
+                        </div>
+                    ))}
+                </div>
+            }
         </>
     );
 }
